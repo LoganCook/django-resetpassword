@@ -1,0 +1,9 @@
+*.py[co]
+__pycache__
+*.sqlite3
+*.cfg
+tests/coverage_html/
+tests/.coverage
+tests/report/
+build/
+app/settings.py
