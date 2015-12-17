@@ -59,3 +59,18 @@ The application generates a log file which is defined in `settings.py`. Make sur
 The default templates for generating email and pages are in `ersaauth/templates`. Make changes to suit requirements.
 
 The access url is: auth/password_reset/ under the `WSGIScriptAlias`: e.g. `fe/auth/password_reset/`
+
+## settings.py
+
+There are two example `settings.py` under `app`: one is for develpment and another is for production. The main difference between
+them is security related settings.
+
+The important settings are intentionaly either have bad values or bad format. So simply by renaming them should not work.
+Remember to put correct values in correct format.
+
+* The default `PASSWORD_RESET_TIMEOUT`, which defines how long a token is valid for, is 10 hours. During this period, user can reset as many times as he/she wants.
+* The default `SECURE_HSTS_SECONDS` in production settings is 1 hour. It should be increased to a bigger value.
+* If `REG_PWD_STRENGTH` is not set in `settings.py`, the default value is `'^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*[!@#\$%\^&\*]).{8,}'`.
+  It requires a password has to be at least 8 letters long, has at least one small letter, one capital letter and one number. Active directory
+  may has more strict requirements. Reflect it in this settings if it is possible.
+* `SECRET_KEY` is better generated when the app is set up.
