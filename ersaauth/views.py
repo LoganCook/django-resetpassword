@@ -153,7 +153,7 @@ def password_reset_confirm(request, token=None,
             form = set_password_form(request.POST)
             if form.is_valid():
                 password = form.cleaned_data['new_password1']
-                logger.debug("Trying to reset password %s for %s" % (password, user))
+                logger.info("Trying to reset password for %s" % user)
                 if ersa_ad.reset_password(user, password):
                     logger.info("Password reset was successful")
                     post_reset_redirect = reverse('password_reset_complete')
